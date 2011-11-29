@@ -54,6 +54,13 @@ struct ion_custom_data {
  unsigned int cmd;
  unsigned long arg;
 };
+
+struct ion_flush_data {
+    struct ion_handle *handle;
+    void *vaddr;
+    unsigned int offset;
+    unsigned int length;
+};
 #define ION_IOC_MAGIC 'I'
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define ION_IOC_ALLOC _IOWR(ION_IOC_MAGIC, 0,   struct ion_allocation_data)
@@ -63,5 +70,7 @@ struct ion_custom_data {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define ION_IOC_IMPORT _IOWR(ION_IOC_MAGIC, 5, int)
 #define ION_IOC_CUSTOM _IOWR(ION_IOC_MAGIC, 6, struct ion_custom_data)
+#define ION_IOC_CLEAN_INV_CACHES        _IOWR(ION_IOC_MAGIC, 9, \
+						struct ion_flush_data)
 #endif
 
