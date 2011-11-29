@@ -537,6 +537,10 @@ ifeq ($(TARGET_ARCH),arm)
 libc_crt_target_cflags += -DCRT_LEGACY_WORKAROUND
 endif
 
+ifeq ($(BOARD_USE_NASTY_PTHREAD_CREATE_HACK),true)
+libc_common_cflags += -DNASTY_PTHREAD_CREATE_HACK
+endif
+
 # Define some common includes
 # ========================================================
 libc_common_c_includes := \
@@ -621,6 +625,9 @@ LOCAL_CFLAGS := $(libc_common_cflags)
 ifeq ($(TARGET_ARCH),arm)
 LOCAL_CFLAGS += -DCRT_LEGACY_WORKAROUND
 endif
+
+
+
 LOCAL_C_INCLUDES := $(libc_common_c_includes)
 LOCAL_MODULE := libc_common
 LOCAL_SYSTEM_SHARED_LIBRARIES :=
