@@ -31,5 +31,5 @@
 
 int raise(int signum)
 {
-    pthread_kill(pthread_self(), signum);
+    return pthread_kill(pthread_self(), signum);
 }
