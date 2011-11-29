@@ -392,6 +392,7 @@ int _debug_pthread_create(void *debug0, void *debug1, pthread_t *thread,
 {
     return pthread_create(thread, attr, start_routine, arg);
 }
+#endif
 
 
 int pthread_attr_init(pthread_attr_t * attr)
