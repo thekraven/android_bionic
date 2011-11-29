@@ -19,11 +19,22 @@
 #define PMEM_UNMAP _IOW(PMEM_IOCTL_MAGIC, 4, unsigned int)
 
 #define PMEM_ALLOCATE _IOW(PMEM_IOCTL_MAGIC, 5, unsigned int)
+#define PMEM_ALLOCATE_ALIGNED   _IOW(PMEM_IOCTL_MAGIC, 15, unsigned int)
 
 #define PMEM_CONNECT _IOW(PMEM_IOCTL_MAGIC, 6, unsigned int)
 
 #define PMEM_GET_TOTAL_SIZE _IOW(PMEM_IOCTL_MAGIC, 7, unsigned int)
 #define PMEM_CACHE_FLUSH _IOW(PMEM_IOCTL_MAGIC, 8, unsigned int)
+
+#define PMEM_CLEAN_INV_CACHES  _IOW(PMEM_IOCTL_MAGIC, 11, unsigned int)
+#define PMEM_CLEAN_CACHES      _IOW(PMEM_IOCTL_MAGIC, 12, unsigned int)
+#define PMEM_INV_CACHES                _IOW(PMEM_IOCTL_MAGIC, 13, unsigned int)
+
+struct pmem_addr {
+    unsigned long vaddr;
+    unsigned long offset;
+    unsigned long length;
+};
 
 struct android_pmem_platform_data
 {
@@ -43,6 +54,11 @@ struct android_pmem_platform_data
 struct pmem_region {
  unsigned long offset;
  unsigned long len;
+};
+
+struct pmem_allocation {
+    unsigned long size;
+    unsigned int align;
 };
 
 #endif
