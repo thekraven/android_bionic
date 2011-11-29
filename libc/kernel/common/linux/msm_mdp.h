@@ -52,6 +52,10 @@ enum {
 #define MDP_TRANSP_NOP 0xffffffff
 #define MDP_ALPHA_NOP 0xff
 
+#define MDP_BLIT_SRC_GEM                0x04000000
+#define MDP_BLIT_DST_GEM                0x02000000
+#define MDP_BLIT_NON_CACHED            0x01000000
+
 struct mdp_rect {
  uint32_t x;
  uint32_t y;
